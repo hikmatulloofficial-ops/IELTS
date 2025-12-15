@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Mini IELTS Reading</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .correct { background: #c8f7c5; }
+    .wrong { background: #f7c5c5; }
+    .question { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+
+<h2>Reading Passage</h2>
+<p>
+The internet has transformed the way people communicate. It allows instant
+access to information and has changed education, business, and social life.
+</p>
+
+<h3>Questions</h3>
+
+<div class="question">
+  1. What has transformed communication?<br>
+  <input type="text" id="q1">
+</div>
+
+<div class="question">
+  2. The internet gives slow access to information. (True/False)<br>
+  <input type="text" id="q2">
+</div>
+
+<div class="question">
+  3. Name one area changed by the internet.<br>
+  <input type="text" id="q3">
+</div>
+
+<button onclick="checkAnswers()">Check answers</button>
+
+<script>
+const answers = {
+  q1: ["internet"],
+  q2: ["false"],
+  q3: ["education", "business", "social life"]
+};
+
+function normalize(text) {
+  return text.toLowerCase().trim().replace(/[^\w\s]/g, "");
+}
+
+function checkAnswers() {
+  for (let q in answers) {
+    const input = document.getElementById(q);
+    const user = normalize(input.value);
+    const correct = answers[q].map(a => normalize(a));
+
+    if (correct.includes(user)) {
+      input.className = "correct";
+    } else {
+      input.className = "wrong";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
+
